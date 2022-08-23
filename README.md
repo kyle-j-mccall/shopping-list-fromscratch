@@ -1,26 +1,50 @@
-## The Golden Rule:
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
+## HTML Elements 
+- Header(title, logout button)
+- form (text input for item, number input for quantity, add item button)
+- div for list
+- ul for all list items (generated dynamically with render function)
+- delete list button
 
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
+## State
+- empty items array
 
-## Making a plan
+## Data
+- items table in supabase
+- item (varchar) (not nullable)
+  quantity (int8) (nullable)
+  bought (boolean) default false (nullable)
+  user_id (uuid) linked to users table id column
 
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1. **For each HTML element ask: Why do I need this?**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1. **Think about how to validate each of your features according to a Definition of Done**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+## Fetch utils
+- checkAuth 
+- signInUser, signUpUser
+- createItem
+- getItems
+- itemBought
+- deleteAllItems
 
-Additional considerations:
+## Authentication
+- Users can only see their own list
+- Users can only update the data to their own user_id
 
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+## User Events
+- on form submit, new item row is added to supabase
+- on form submit, displayItems function will getItems and display all items in DOM
+- on click of item itemBought is called and updates row and displays that item is bought
+- on click og delete button deleteAllItems is called and list is deleted from supabase and DOM
+
+# Plan
+- Hardcode header and logout button 
+- Hardcode containers and form in HTML
+
+- create supabase table
+- link supabase
+
+- write renderItem function in render-utils
+- write displayItems function in app.js. getItems from supabase and loop through and   render each item and append and display
+- write form event listener and call createItem inside. 
+- write itemBought function in fetch-utils that updates bought from false to true
+- in render item write a conditional that adds different class based on whether bought is true or false
+- call displayItems on load
+

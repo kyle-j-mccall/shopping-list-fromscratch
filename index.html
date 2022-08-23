@@ -18,14 +18,26 @@
 
 <body>
     <header class="page-header">
-        <img class="logo" src="/assets/html_css_js.png">
-        <p class="title">Supabase Web App</p>
+        
+        <p class="title">Shopping list</p>
         <nav>
             <a id="sign-out-link" href="auth">Sign Out</a>
         </nav>
     </header>
 
     <main>
+        <form>
+            <label for="item">Item</label>
+            <input name="item" type="text">
+            <label for="quantity">Quantity</label>
+            <input name="quantity" type="number">
+            <button>Add to list</button>
+        </form>
+
+        <div id="list-container" class="list">
+
+        </div>
+        
 
     </main>
 

@@ -34,6 +34,10 @@ body {
     font-weight: 800;
 }
 
+form {
+    text-align: center;
+}
+
 .page-header nav {
     flex-grow: 2;
     display: flex;
@@ -44,6 +48,25 @@ body {
 main {
     padding: 20px;
 }
+
+.list-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(110, 209, 90);
+    margin: 5px;
+    cursor: pointer;
+}
+.item-bought {
+    background-color: red;
+    border: solid 1px black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+}
+
+
 
 footer {
     position: sticky;

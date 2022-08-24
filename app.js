@@ -1,4 +1,4 @@
-import { checkAuth, signOutUser, createListItem, getItems } from './fetch-utils.js';
+import { checkAuth, signOutUser, createListItem, getItems, itemBought } from './fetch-utils.js';
 
 import { renderItems } from './render-utils.js';
 
@@ -10,6 +10,7 @@ signOutLink.addEventListener('click', signOutUser);
 
 const listContainer = document.getElementById('list-container');
 const form = document.querySelector('form');
+
 
 let itemsArr = [];
 
@@ -33,6 +34,7 @@ form.addEventListener('submit', async (e) => {
 
 });
 
+
 // local state:
 
 async function displayItems() {
@@ -42,8 +44,21 @@ async function displayItems() {
 
     for (let item of itemsArr) {
         const renderedItem = renderItems(item);
+        renderedItem.addEventListener('click', async () => {
+            await itemBought(item.id);
+            
+            if (item.bought === true) {
+                renderedItem.classList.add('item-bought');
+                
+            } displayItems();
+            
+        });
         listContainer.append(renderedItem);
+        
     }
+    
+
+    
 
 }
 

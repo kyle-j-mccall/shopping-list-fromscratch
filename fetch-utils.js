@@ -49,7 +49,7 @@ export async function createListItem(item, quantity) {
 }
 
 export async function getItems() {
-    const response = await client.from('shopping_list').select('*');
+    const response = await client.from('shopping_list').select('*').order('id');
 
     return checkError(response);
 }

@@ -59,7 +59,7 @@ async function displayItems() {
         });
         listContainer.append(renderedItem);
         
-    }
+    } displayDeleteButton();
     
 
     
@@ -67,11 +67,13 @@ async function displayItems() {
 }
 
 function displayDeleteButton() {
-    if (itemsArr !== []) {
+    if (itemsArr.length > 0) {
         deleteButton.classList.add('delete-button');
-    } else if (itemsArr === []) {
+        deleteButton.classList.remove('hidden');
+    } else if (itemsArr.length === 0) {
         deleteButton.classList.add('hidden');
     }
+    console.log(itemsArr);
 }
 
 deleteButton.addEventListener('click', async () => {
@@ -82,6 +84,6 @@ deleteButton.addEventListener('click', async () => {
 
 displayItems();
 displayDeleteButton();
-console.log(itemsArr);
+
 
 // events:

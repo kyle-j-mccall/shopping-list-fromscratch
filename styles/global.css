@@ -51,7 +51,7 @@ main {
 
 .list-item {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: rgb(110, 209, 90);
     margin: 5px;
@@ -61,9 +61,15 @@ main {
     background-color: red;
     border: solid 1px black;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin: 5px;
+}
+
+.button-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 

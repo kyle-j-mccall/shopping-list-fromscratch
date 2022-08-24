@@ -1,28 +1,28 @@
 
 ## HTML Elements 
-- Header(title, logout button)
-- form (text input for item, number input for quantity, add item button)
-- div for list
-- ul for all list items (generated dynamically with render function)
-- delete list button
+- Header(title, logout button) ()
+- form (text input for item, number input for quantity, add item button) ()
+- div for list ()
+- ul for all list items (generated dynamically with render function) ()
+- delete list button ()
 
 ## State
-- empty items array
+- empty items array ()
 
 ## Data
-- items table in supabase
-- item (varchar) (not nullable)
-  quantity (int8) (nullable)
-  bought (boolean) default false (nullable)
-  user_id (uuid) linked to users table id column
+- items table in supabase (x)
+- item (varchar) (not nullable) (x)
+  quantity (int8) (nullable) (x)
+  bought (boolean) default false (nullable) (x)
+  user_id (uuid) linked to users table id column (x)
 
 ## Fetch utils
-- checkAuth 
-- signInUser, signUpUser
-- createItem
-- getItems
-- itemBought
-- deleteAllItems
+- checkAuth (x)
+- signInUser, signUpUser (x)
+- createItem (x)
+- getItems (x)
+- itemBought (x)
+- deleteAllItems (x)
 
 ## Authentication
 - Users can only see their own list

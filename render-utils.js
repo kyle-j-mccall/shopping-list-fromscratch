@@ -2,9 +2,11 @@ import { itemBought } from './fetch-utils.js';
 
 export function renderItems(item) {
     const itemDiv = document.createElement('div');
-    const p = document.createElement('p');
+    const itemP = document.createElement('p');
+    const quantityP = document.createElement('p');
 
-    p.textContent = item.item;
+    itemP.textContent = item.item;
+    quantityP.textContent = `(${item.quantity})`;
 
     if (item.bought === true) {
         itemDiv.classList.add('item-bought');
@@ -16,7 +18,7 @@ export function renderItems(item) {
     
     
     
-    itemDiv.append(p);
+    itemDiv.append(itemP, quantityP);
     
     
 

@@ -1,4 +1,4 @@
-import { checkAuth, signOutUser, createListItem, getItems, itemBought } from './fetch-utils.js';
+import { checkAuth, signOutUser, createListItem, getItems, itemBought, deleteItems } from './fetch-utils.js';
 
 import { renderItems } from './render-utils.js';
 
@@ -10,6 +10,7 @@ signOutLink.addEventListener('click', signOutUser);
 
 const listContainer = document.getElementById('list-container');
 const form = document.querySelector('form');
+const deleteButton = document.getElementById('delete-button');
 
 
 let itemsArr = [];
@@ -61,6 +62,12 @@ async function displayItems() {
     
 
 }
+
+deleteButton.addEventListener('click', async () => {
+    await deleteItems();
+    itemsArr = [];
+    displayItems();    
+});
 
 displayItems();
 

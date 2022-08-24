@@ -21,12 +21,12 @@ form.addEventListener('submit', async (e) => {
     const data = new FormData(form);
     const item = data.get('item');
     const quantity = data.get('quantity');
-    console.log(item, quantity);
+    
 
     const newItem = await createListItem(item, quantity);
     itemsArr.push(newItem);
 
-    console.log(newItem);
+    
 
     await displayItems();
     
@@ -73,7 +73,7 @@ function displayDeleteButton() {
     } else if (itemsArr.length === 0) {
         deleteButton.classList.add('hidden');
     }
-    console.log(itemsArr);
+    
 }
 
 deleteButton.addEventListener('click', async () => {

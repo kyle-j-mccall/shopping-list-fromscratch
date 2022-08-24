@@ -1,4 +1,4 @@
-import { itemBought } from './fetch-utils.js';
+
 
 export function renderItems(item) {
     const itemDiv = document.createElement('div');

@@ -29,6 +29,7 @@ form.addEventListener('submit', async (e) => {
     console.log(newItem);
 
     await displayItems();
+    
 
     form.reset();
 
@@ -40,6 +41,8 @@ form.addEventListener('submit', async (e) => {
 
 async function displayItems() {
     listContainer.textContent = '';
+
+    
 
     itemsArr = await getItems();
 
@@ -63,6 +66,14 @@ async function displayItems() {
 
 }
 
+function displayDeleteButton() {
+    if (itemsArr !== []) {
+        deleteButton.classList.add('delete-button');
+    } else if (itemsArr === []) {
+        deleteButton.classList.add('hidden');
+    }
+}
+
 deleteButton.addEventListener('click', async () => {
     await deleteItems();
     itemsArr = [];
@@ -70,5 +81,7 @@ deleteButton.addEventListener('click', async () => {
 });
 
 displayItems();
+displayDeleteButton();
+console.log(itemsArr);
 
 // events:

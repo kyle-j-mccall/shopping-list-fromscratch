@@ -1,23 +1,89 @@
-// importing other stuff, utility functions for:
-// working with supabase:
-import { checkAuth, signOutUser } from './fetch-utils.js';
-// pure rendering (data --> DOM):
+import { checkAuth, signOutUser, createListItem, getItems, itemBought, deleteItems } from './fetch-utils.js';
 
-/*  "boiler plate" auth code */
-// checking if we have a user! (will redirect to auth if not):
+import { renderItems } from './render-utils.js';
+
+
 checkAuth();
-// can optionally return the user:
-// const user = checkAuth();
 
-// sign out link:
 const signOutLink = document.getElementById('sign-out-link');
 signOutLink.addEventListener('click', signOutUser);
-/* end "boiler plate auth code" */
 
-// grab needed DOM elements on page:
+const listContainer = document.getElementById('list-container');
+const form = document.querySelector('form');
+const deleteButton = document.getElementById('delete-button');
+
+
+let itemsArr = [];
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const item = data.get('item');
+    const quantity = data.get('quantity');
+    
+
+    const newItem = await createListItem(item, quantity);
+    itemsArr.push(newItem);
+
+    
+
+    await displayItems();
+    
+
+    form.reset();
+
+
+});
+
 
 // local state:
 
-// display functions:
+async function displayItems() {
+    listContainer.textContent = '';
+
+    
+
+    itemsArr = await getItems();
+
+    for (let item of itemsArr) {
+        const renderedItem = renderItems(item);
+        renderedItem.addEventListener('click', async () => {
+            await itemBought(item.id);
+            
+            if (item.bought === true) {
+                renderedItem.classList.add('item-bought');
+                
+            } displayItems();
+            
+        });
+        listContainer.append(renderedItem);
+        
+    } displayDeleteButton();
+    
+
+    
+
+}
+
+function displayDeleteButton() {
+    if (itemsArr.length > 0) {
+        deleteButton.classList.add('delete-button');
+        deleteButton.classList.remove('hidden');
+    } else if (itemsArr.length === 0) {
+        deleteButton.classList.add('hidden');
+    }
+    
+}
+
+deleteButton.addEventListener('click', async () => {
+    await deleteItems();
+    itemsArr = [];
+    displayItems();    
+});
+
+displayItems();
+displayDeleteButton();
+
 
 // events:

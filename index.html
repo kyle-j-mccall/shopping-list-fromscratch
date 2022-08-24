@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=DynaPuff&family=Goldman&family=Inconsolata&family=Lobster&family=Playfair+Display&family=Rubik+Dirt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/global.css" />
     <title>Supabase Web App</title>
@@ -18,14 +19,29 @@
 
 <body>
     <header class="page-header">
-        <img class="logo" src="/assets/html_css_js.png">
-        <p class="title">Supabase Web App</p>
+        
+        <p class="title">Shopping list</p>
         <nav>
             <a id="sign-out-link" href="auth">Sign Out</a>
         </nav>
     </header>
 
     <main>
+        <form>
+            <label for="item">Item:</label>
+            <input name="item" type="text">
+            <label for="quantity">Quantity:</label>
+            <input name="quantity" type="number">
+            <button>Add to list</button>
+        </form>
+
+        <div id="list-container" class="list">
+
+        </div>
+        <div class="button-container">
+            <button id="delete-button">Delete List</button>
+        </div>
+        
 
     </main>
 

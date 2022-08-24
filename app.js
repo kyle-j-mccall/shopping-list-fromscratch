@@ -26,6 +26,8 @@ form.addEventListener('submit', async (e) => {
 
     console.log(newItem);
 
+    await displayItems();
+
     form.reset();
 
 
@@ -34,9 +36,14 @@ form.addEventListener('submit', async (e) => {
 // local state:
 
 async function displayItems() {
+    listContainer.textContent = '';
+
     itemsArr = await getItems();
 
-    console.log(itemsArr);
+    for (let item of itemsArr) {
+        const renderedItem = renderItems(item);
+        listContainer.append(renderedItem);
+    }
 
 }
 
